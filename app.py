@@ -50,7 +50,7 @@ def generer_nuage_mots(textes, titre_section):
 
 # --- Barre Latérale (Sidebar) ---
 with st.sidebar:
-    st.image("https://i.imgur.com/LF3KIQa.jpeg", width=100, caption="Photo de Mohamed EL FILALI")
+    st.image("https://i.imgur.com/LF3KIQa.jpeg", width=100, caption="EL FILALI MOHAMED")
     st.markdown("# DuoScan Pédagogique 🦉")
     st.divider()
     st.markdown("**Master :** Ingénierie Technopédagogique et Innovation")
