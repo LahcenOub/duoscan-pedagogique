@@ -72,7 +72,7 @@ with st.sidebar:
     4.  Explorez les insights !
     """)
     st.divider()
-    st.caption(f"© {pd.Timestamp.now().year} EL FILALI Mohamed")
+    st.caption(f"© {pd.Timestamp.now().year} - ITPI")
 
 # --- Interface Utilisateur Principale ---
 st.title("🦉 DuoScan Pédagogique")
