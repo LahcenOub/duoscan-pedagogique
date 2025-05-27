@@ -1,0 +1,12 @@
+# .streamlit/config.toml
+
+[theme]
+primaryColor="#2B7A78"  # Une couleur principale (ex: un bleu-vert soutenu)
+backgroundColor="#DEF2F1" # Couleur de fond principale (très claire)
+secondaryBackgroundColor="#FEFFFF" # Couleur de fond pour les éléments comme la sidebar, expanders
+textColor="#17252A" # Couleur du texte principal
+font="sans serif" # Ou "serif", "monospace"
+
+# Vous pouvez également spécifier les couleurs pour les éléments de formulaire, etc.
+# Consultez la documentation de Streamlit sur le theming pour plus d'options.
+# https://docs.streamlit.io/library/advanced-features/theming
