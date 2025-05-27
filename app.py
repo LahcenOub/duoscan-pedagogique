@@ -3,7 +3,7 @@ from textblob import TextBlob
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import pandas as pd
-import plotly.express as px # Pour Plotly Express
+import plotly.express as px
 import re
 
 # --- Configuration de la Page Streamlit ---
@@ -13,7 +13,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# --- Fonctions Utilitaires (inchangées) ---
+# --- Fonctions Utilitaires ---
 def nettoyer_texte(texte):
     texte = texte.lower()
     return texte
@@ -50,7 +50,7 @@ def generer_nuage_mots(textes, titre_section):
 
 # --- Barre Latérale (Sidebar) ---
 with st.sidebar:
-    # st.image("https://i.imgur.com/5RfOsTQ.png", width=100) # Ligne de l'image du logo supprimée
+    st.image("https://i.imgur.com/NajV3AA.jpg", width=100, caption="Photo de Mohamed EL FILALI")
     st.markdown("# DuoScan Pédagogique 🦉")
     st.divider()
     st.markdown("**Master :** Ingénierie Technopédagogique et Innovation")
@@ -73,7 +73,6 @@ with st.sidebar:
     """)
     st.divider()
     st.caption(f"© {pd.Timestamp.now().year} EL FILALI Mohamed")
-
 
 # --- Interface Utilisateur Principale ---
 st.title("🦉 DuoScan Pédagogique")
@@ -160,12 +159,14 @@ if st.button("🚀 Analyser les Avis Duolingo", type="primary", use_container_wi
         if sum(sentiments_counts.values()) > 0:
             df_sentiments = pd.DataFrame(list(sentiments_counts.items()), columns=['Sentiment', 'Nombre'])
 
+            # Définition des couleurs pour le graphique Plotly
             sentiment_color_map = {
-                "Positif 👍": "#28a745",
-                "Négatif 👎": "#dc3545",
-                "Neutre 😐": "#6c757d"
+                "Positif 👍": "#28a745",  # Vert
+                "Négatif 👎": "#dc3545",  # Rouge
+                "Neutre 😐": "#6c757d"   # Gris
             }
 
+            # Création du graphique avec Plotly Express
             fig = px.bar(
                 df_sentiments,
                 x='Sentiment',
@@ -175,11 +176,15 @@ if st.button("🚀 Analyser les Avis Duolingo", type="primary", use_container_wi
                 labels={'Nombre': "Nombre d'Avis", 'Sentiment': 'Catégorie de Sentiment'},
                 text_auto=True
             )
+            # Améliorations esthétiques du graphique Plotly
             fig.update_layout(
                 showlegend=False,
                 xaxis_title=None,
                 yaxis_title="Nombre d'Avis",
-                font=dict(family="sans-serif", size=12),
+                font=dict(
+                    family="sans-serif",
+                    size=12,
+                ),
                 margin=dict(l=20, r=20, t=30, b=20),
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',
@@ -189,7 +194,6 @@ if st.button("🚀 Analyser les Avis Duolingo", type="primary", use_container_wi
             st.plotly_chart(fig, use_container_width=True)
         else:
             st.info("Aucune donnée à afficher dans le graphique.")
-
 
         st.divider()
         # --- Détail par Avis ---
